@@ -1,0 +1,33 @@
+import 'dart:io';
+import 'dart:math';
+
+void main(){
+  var countGuess = 0;
+  var r = Random();
+  var answer = r.nextInt(100) + 1;
+  print(' ❤ GUESS THE NUMBER ❤ ');
+  for(;;) {
+    stdout.write('Guess the number between 1 and 100 : ');
+    var input = stdin.readLineSync();
+    if(input == null){
+      print('Input error');
+      return;
+    }
+    var guess = int.tryParse(input);
+    if(guess == null){
+      continue;
+    }else{
+      countGuess++;
+      if(guess < answer){
+        print('➜ $guess is TOO LOW! ▼');
+      }else if(guess > answer){
+        print('➜ $guess is TOO HIGH! ▲');
+      }else{
+        print('➜ $answer is CORRECT ❤,total guesses: $countGuess');
+        print(' ❤ THE END ❤ ');
+        break;
+      }
+
+    }
+  }
+}
